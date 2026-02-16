@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-function Pagenotfound(props) {
+function Pagenotfound() {
     return (
         <Box sx={{ textAlign: 'center', py: 10 }}>
             <Typography variant="h2">404</Typography>

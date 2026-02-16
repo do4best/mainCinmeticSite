@@ -1,11 +1,11 @@
 import React from 'react';
-import {Typography} from "@mui/material";
+import {Container, Typography} from "@mui/material";
 
-function Search(props) {
+function Search() {
     return (
-        <>
+        <Container maxWidth="lg">
         <Typography variant="h2">Search</Typography>
-        </>
+        </Container>
     );
 }
 

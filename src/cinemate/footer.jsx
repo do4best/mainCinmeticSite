@@ -7,12 +7,12 @@ export default function Footer() {
             component="footer"
             sx={{
                 py: 3,
-                px: 2,
                 mt: 'auto',
                 backgroundColor: (theme) =>
                     theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
             }}
         >
+            <Container maxWidth="lg">
 
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, flexWrap: 'wrap' }}>
                 <Box sx={{ mb: 2 }}>
@@ -27,7 +27,7 @@ export default function Footer() {
                     {links.map((link)=><Link key={link} href={link}>{link}</Link>)}
                 </Box>
                 </Box>
-
+            </Container>
         </Box>
     );
 }

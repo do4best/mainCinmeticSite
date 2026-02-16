@@ -14,11 +14,11 @@ function MainCinemate() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container maxWidth="lg">
+            <Box>
                 <Header/>
                 <AllRouter/>
                 <Footer/>
-            </Container>
+            </Box>
         </ThemeProvider>
     );
 }
