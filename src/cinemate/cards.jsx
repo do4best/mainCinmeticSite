@@ -27,7 +27,7 @@ function Cards({movie}) {
                    Release Date
                 </Typography>
                 <Typography sx={{ bgcolor:"green",color:'white',border:'rounded' }} color="text.secondary"> Ratings :
-                    {vote_average*10}% </Typography>
+                    {(vote_average*10).toFixed(2)}%. </Typography>
                 <CardContent>
                     <Link to={`/movie/${movie.id}`}>
                     <Typography gutterBottom variant="h5" component="div">
