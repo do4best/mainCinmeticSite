@@ -8,12 +8,13 @@ const DEFAULT_OPTIONS = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNzgzYTFhOTM0YzU1MmUzNzc0OTA3YmJhZWRiMTk4YiIsIm5iZiI6MTcwNDUyNDU5OC4xNSwic3ViIjoiNjU5OGZiMzY3ZDU1MDQwMWE3MmYwZGQwIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.KcVFM8-Q2kUlhmr9_9rzgTsfYVR-M8INXk0K-mhA2zg'
     }
 };
-function  useFetch(api,options=DEFAULT_OPTIONS ) {
+function  useFetch(api, page = 1, options=DEFAULT_OPTIONS,queryTerm="" ) {
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const url = `https://api.themoviedb.org/3/${api}?page=1`;
+    const [totalPages, setTotalPages] = useState(0);
+    const url = `https://api.themoviedb.org/3/${api}?page=${page}&query=${queryTerm}`;
     const stableOptions = useMemo(() => options, [JSON.stringify(options)]);
 
     useEffect(() => {
@@ -40,6 +41,7 @@ function  useFetch(api,options=DEFAULT_OPTIONS ) {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const json = await res.json();
                 setData(json.results ?? []);
+                setTotalPages(json.total_pages ?? 0);
             } catch (err) {
                 if (err.name !== "AbortError") setError(err);
             } finally {
@@ -50,7 +52,7 @@ function  useFetch(api,options=DEFAULT_OPTIONS ) {
         return () => controller.abort();
     }, [url]);
 
-    return { data, loading, error };
+    return { data, loading, error, totalPages };
 }
 
 export default useFetch;

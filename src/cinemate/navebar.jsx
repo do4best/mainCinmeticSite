@@ -87,6 +87,14 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+    const handelSubmit = (e) => {
+        e.preventDefault();
+        const query = e.target.search.value;
+        e.target.reset()
+        if (query) {
+            return navigate(`/search?q=${query}`);
+        }
+    }
 
     return (
         <AppBar position="static" sx={{bgcolor:"#000000"}}>
@@ -191,7 +199,7 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', gap: 2 }}>
-                        <Search>
+                        <Search onSubmit={handelSubmit} sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} name="search" id="search">
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
