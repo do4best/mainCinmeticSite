@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Routes} from "react-router";
+import {Route, Routes} from "react-router-dom";
 import {MovieList,MovieItem,PageNotFound,Search} from "../cinemate/pages";
 function AllRouter() {
     return (
@@ -11,7 +11,7 @@ function AllRouter() {
     <Route path="movies/top" element={<MovieList api="movie/top_rated"/>}/>
     <Route path="movies/upcoming" element={<MovieList api="movie/upcoming"/>}/>
     <Route path="search" element={<Search api="search/movie"/>}/>
-    <Route path="*" element={<PageNotFound/>}/>
+    <Route path="*" element={<PageNotFound />}/>
 </Routes>
         </>
     );

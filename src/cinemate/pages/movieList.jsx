@@ -4,6 +4,7 @@ import {Cards, Header} from "../index.js";
 import Card from "@mui/material/Card";
 import useFetch from "../hooks/useFetch.jsx";
 import Button from "@mui/material/Button";
+import SearchBar from "../searchBar.jsx";
 
 
 function MovieList({api}) {
@@ -38,6 +39,7 @@ function MovieList({api}) {
     return (
         <>
             <Container maxWidth="lg">
+                <SearchBar/>
                 <Box sx={{my: 4, minHeight: '50vh', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem'}}>
                     {totalPages > 1 && (
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 2, gap: 1, flexWrap: 'wrap' }}>

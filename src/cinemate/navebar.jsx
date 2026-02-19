@@ -100,20 +100,21 @@ function ResponsiveAppBar() {
         <AppBar position="static" sx={{bgcolor:"#000000"}}>
             <Container maxWidth="lg">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex',color:'red' }, mr: 1 }} />
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+                        component={NavLink}
+                        to="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: 'red',
                             textDecoration: 'none',
+
                         }}
                     >
                         LOGO
@@ -192,23 +193,33 @@ function ResponsiveAppBar() {
                                     borderBottom: isActive ? '2px solid white' : 'none',
                                     borderRadius: 0
                                 })}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 0, color: 'white', display: 'block' }}
                             >
                                 {page.label}
                             </Button>
                         ))}
                     </Box>
                     <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', gap: 2 }}>
-                        <Search onSubmit={handelSubmit} sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }} name="search" id="search">
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search…"
-                                inputProps={{ 'aria-label': 'search' }}
-                                onKeyDown={handleSearch}
-                            />
-                        </Search>
+                            <Search
+                              onSubmit={handelSubmit}
+                              sx={{
+                                mr: 2,
+                                display: { xs: 'none', md: 'flex' },
+                                alignItems: 'center',
+                                height: 40,
+                              }}
+                              name="search"
+                              id="search"
+                            >
+                                <SearchIconWrapper>
+                                    <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder="Search…"
+                                    inputProps={{ 'aria-label': 'search' }}
+                                    onKeyDown={handleSearch}
+                                />
+                            </Search>
                         <NightMode/>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
