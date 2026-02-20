@@ -97,7 +97,7 @@ function SearchBar() {
                     width: '80%',
                     flex: 1,
                     display: { xs: 'none', md: 'flex' },
-                    border: '1px solid',
+                    border: '1px solid red',
                     alignItems: 'center',
                     height: 40,
                     color: '#fff',
@@ -106,7 +106,7 @@ function SearchBar() {
                     <SearchIconWrapper>
                         <SearchIcon />
                     </SearchIconWrapper>
-                    <StyledInputBase
+                    <StyledInputBase sx={{color:'black'}}
                         placeholder="Search…"
                         inputProps={{ 'aria-label': 'search' }}
                         onKeyDown={handleSearch}

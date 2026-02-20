@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import {Box, CircularProgress, Container, Typography} from "@mui/material";
-import {Cards, Header} from "../index.js";
-import Card from "@mui/material/Card";
+import {Box, CircularProgress, Container, Grid, Typography} from "@mui/material";
+import {Cards} from "../index.js";
 import useFetch from "../hooks/useFetch.jsx";
 import Button from "@mui/material/Button";
 import SearchBar from "../searchBar.jsx";
@@ -62,9 +61,13 @@ function MovieList({api}) {
                             </Button>
                         </Box>
                     )}
-                    <Box sx={{width: '100%', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem'}}>
-                        {movies.map((movie) => <Cards key={movie.id} movie={movie}/>)}
-                    </Box>
+                    <Grid container spacing={3} justifyContent="center">
+                        {movies.map((movie) => (
+                            <Grid item key={movie.id} xs={12} sm={6} md={4}>
+                                <Cards movie={movie}/>
+                            </Grid>
+                        ))}
+                    </Grid>
 
                     {totalPages > 1 && (
                         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 2, gap: 1, flexWrap: 'wrap' }}>
