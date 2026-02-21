@@ -54,7 +54,7 @@ export default function MovieItem() {
 
     if (!data || data.success === false) {
         return (
-            <Box sx={{ bgcolor: 'background.black', display: 'flex', justifyContent: 'center',flexDirection:'row',flexWrap:'wrap', alignItems: 'center', height: '100vh', width: '100%' }}>
+            <Box sx={{ bgcolor: 'background.black', display: 'flex', justifyContent: 'center',flexDirection:'row',flexWrap:'wrap', alignItems: 'center', height: '50vh', width: '100%',gap:5 }}>
                 <Typography variant="h5" color="error">Movie not found</Typography>
             </Box>
         )
@@ -63,23 +63,29 @@ export default function MovieItem() {
     const image = data.poster_path ? `https://image.tmdb.org/t/p/w500/${data.poster_path}` : "/static/images/cards/contemplative-reptile.jpg";
 
     return (
-        <Container maxWidth="lg" sx={{ my: 4 }}>
-            <Box sx={{ mb: 4, display:'flex',flexDirection:'column', alignItems: 'center' }}>
-            <Grid container spacing={4} alignItems="center">
-                <Grid item xs={12} md={2}>
+        <Container maxWidth="lg" sx={{  }}>
+            <Box sx={{ mb: 4, display:'flex',flexDirection: { xs: 'column', md: 'row' },
+                gap: { xs: 2, md: 4 },
+                alignItems: { xs: 'stretch', md: 'center' },
+                height: { xs: 'auto', md: '80vh' }, justifyContent:'center',width:'100%' }}>
+            {/*<Grid container spacing={0} alignItems="start">*/}
+                <Grid item xs={12} md={12}>
                     <Box
                         component="img"
                         src={image}
                         alt={data.title}
                         sx={{
-                            width: '70%',
+                            width: '100%',
+                            height: '100%',
                             borderRadius: 2,
                             boxShadow: 3,
-                            display: 'block'
+                            flexBasis: { xs: '100%', md: '100%' },   // was smaller? increase this
+                            maxWidth: { xs: '100%', md: '100%' },
+
                         }}
                     />
                 </Grid>
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} md={12}>
 
 
                             <Typography variant="h3" component="h1" gutterBottom fontWeight="bold">
@@ -152,7 +158,7 @@ export default function MovieItem() {
                         </Grid>
 
                 </Grid>
-            </Grid>
+            {/*</Grid>*/}
             </Box>
         </Container>
     );
